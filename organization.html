@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>部门管理</title>
+    <link rel="stylesheet" href="organization.css" type="text/css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+</head>
+
+<body>
+    <!-- 返回按钮 -->
+    <a href="javascript:void(0);" id="backButton" class="back-button">返回</a>
+
+    <div id="app">
+        <div class="div1">
+            <h1>部门管理</h1>
+            <div class="department-create-form">
+                <label>部门名称:<input type="text" v-model="departmentInput.name" placeholder="请输入部门名称" required></label>
+                <label>组长:
+                    <select v-model="departmentInput.leader">
+                        <option disabled value="">请选择组长</option>
+                        <option v-for="leader in leaders" :value="leader">{{ leader }}</option>
+                    </select>
+                </label>
+                <label>副组长:
+                    <select v-model="departmentInput.viceLeader">
+                        <option disabled value="">请选择副组长</option>
+                        <option v-for="viceLeader in viceLeaders" :value="viceLeader">{{ viceLeader }}</option>
+                    </select>
+                </label>
+                <label>成员数量:<input type="number" v-model.number="departmentInput.membersCount" placeholder="请输入成员数量"
+                        required></label>
+                <button type="button" @click="createDepartment">创建部门</button>
+            </div>
+
+            <table class="departments-table">
+                <thead>
+                    <tr>
+                        <th>序号</th>
+                        <th>部门</th>
+                        <th>组长</th>
+                        <th>副组长</th>
+                        <th>成员总数</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="(department, index) in departmentsData" :key="department.id">
+                        <td>{{ index + 1 }}</td>
+                        <td>{{ department.name }}</td>
+                        <td>{{ department.leader }}</td>
+                        <td>{{ department.viceLeader }}</td>
+                        <td>{{ department.membersCount }}</td>
+                        <td>
+                            <button @click.prevent="editDepartment(department)">编辑</button>
+                            <button @click.prevent="deleteDepartment(index)">删除</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- 编辑部门的模态框 -->
+            <div class="modal" v-if="showEditDepartmentModal">
+                <div class="modal-content">
+                    <span class="close" @click="closeEditDepartmentModal">&times;</span>
+                    <h2>编辑部门信息</h2>
+                    <label>部门名称:<input type="text" v-model="departmentEditInput.name" placeholder="请输入部门名称"
+                            required></label>
+                    <label>组长:
+                        <select v-model="departmentEditInput.leader">
+                            <option disabled value="">请选择组长</option>
+                            <option v-for="leader in leaders" :value="leader">{{ leader }}</option>
+                        </select>
+                    </label>
+                    <label>副组长:
+                        <select v-model="departmentEditInput.viceLeader">
+                            <option disabled value="">请选择副组长</option>
+                            <option v-for="viceLeader in viceLeaders" :value="viceLeader">{{ viceLeader }}</option>
+                        </select>
+                    </label>
+                    <label>成员数量:<input type="number" v-model.number="departmentEditInput.membersCount"
+                            placeholder="请输入成员数量" required></label>
+                    <button type="button" @click="updateDepartment">更新部门信息</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="organization.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,235 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f3f3f3;
+    background: url('organization.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #333;
+}
+
+
+.div1 {
+    max-width: 950px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #7b1fa2;
+}
+
+/* 添加深色文字样式的表单标签 */
+.department-create-form label,
+.modal-content label {
+    display: block;
+    margin-bottom: 10px;
+    color: #9c27b0;
+    /* 深色文字 */
+}
+
+
+
+/* 结合鲜艳颜色的按钮样式 */
+.department-create-form button,
+.departments-table button,
+.modal-content button {
+    padding: 10px 15px;
+    margin-bottom: 15px;
+    /* 按钮间距 */
+    border-radius: 25px;
+    background: linear-gradient(45deg, #9c27b0, #e040fb);
+    color: #fff;
+    border: none;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+/* 按钮悬停效果 */
+.department-create-form button:hover,
+.departments-table button:hover,
+.modal-content button:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(135deg, #9c27b0, #e040fb);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* 遮罩样式 */
+.modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+
+
+/* 关闭按钮悬停旋转 */
+.modal-content .close:hover {
+    transform: rotate(90deg);
+}
+
+
+.department-create-form input[type="text"],
+.department-create-form input[type="number"],
+.department-create-form select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+}
+
+.department-create-form button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #6a1b9a;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    margin-top: 20px;
+    transition: all 0.3s ease-in-out;
+}
+
+.department-create-form button:hover {
+    background-color: #ab47bc;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.departments-table {
+    width: 100%;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.departments-table thead th,
+.departments-table tbody td {
+    padding: 15px;
+    background-color: #f3e5f5;
+    color: #7b1fa2;
+}
+
+
+.departments-table button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.departments-table button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 600px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.modal-content label {
+    color: #7b1fa2;
+}
+
+.modal-content input[type="text"],
+.modal-content input[type="number"],
+.modal-content select {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #7b1fa2;
+}
+
+.modal-content .close {
+    float: right;
+    font-size: 28px;
+    color: #7b1fa2;
+}
+
+.modal-content .close:hover {
+    color: #e91e63;
+}
+
+.modal-content h2 {
+    text-align: center;
+    color: #7b1fa2;
+}
+
+.modal-content button {
+    width: auto;
+    background-color: #6a1b9a;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+.modal-content button:hover {
+    background-color: #ab47bc;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+}
+
+.back-button {
+    display: inline-block;
+    margin: 20px;
+    padding: 15px 30px;
+    background-color: #5e2a7e;
+    /* Purple */
+    border: 2px solid #ffc0cb;
+    /* Pinkish border */
+    color: #ffc0cb;
+    /* Pinkish text */
+    text-decoration: none;
+    border-radius: 25px;
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+    font-weight: bold;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+.back-button:hover {
+    background-color: #7d5699;
+    /* Light purple */
+    color: #fff;
+    /* White text */
+    transform: scale(1.1);
+    /* Scaled up on hover */
+    cursor: pointer;
+    /* Hand cursor on hover */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    /* Shadow effect for depth */
+}

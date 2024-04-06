@@ -1,0 +1,102 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background: #f5f5f5;
+    background: url('managementSystem.jpg') no-repeat center center fixed;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+}
+
+.div1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    text-align: center;
+    /* 居中标题 */
+    border: 2px solid #333;
+    /* 添加实线边框 */
+    padding: 10px;
+    width: 50%;
+    margin: 0 auto 20px;
+    /* 水平自动边距，同时设置下边距为20px */
+    background-color: #f7f7f7;
+    /* 实线框背景色 */
+    border-radius: 10px;
+    /* 圆角 */
+}
+
+.block-container {
+    display: flex;
+    justify-content: space-around;
+    /* 使色块居中且分散 */
+    flex-wrap: wrap;
+    /* 允许换行 */
+    gap: 20px;
+    /* 色块之间的间隔 */
+    width: 100%;
+    /* 设置容器宽度 */
+}
+
+.block {
+    width: 30%;
+    /* 色块宽度，改为百分比以适配容器宽度 */
+    max-width: 200px;
+    /* 设置最大宽度 */
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    color: black;
+    /* 修改文字颜色，以适应白色背景 */
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    border: 2px solid #333;
+    /* 给色块添加边框 */
+    border-radius: 10px;
+    /* 圆角 */
+    background-color: #fff;
+    /* 色块背景色 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* 轻微阴影效果 */
+}
+
+.block-text {
+    border: 1px solid black;
+    /* 文字实线框 */
+    padding: 5px;
+    border-radius: 5px;
+    /* 圆角 */
+}
+
+.block:hover {
+    transform: scale(1.05);
+}
+
+/* Color for each section */
+.user {
+    background-color: #4CAF50;
+}
+
+.permission {
+    background-color: #2196F3;
+}
+
+.parameter {
+    background-color: #f44336;
+}
+
+.role {
+    background-color: #FFC107;
+}
+
+.organization {
+    background-color: #9C27B0;
+}
+
+.announcement {
+    background-color: #00BCD4;
+}

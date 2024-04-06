@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户管理</title>
+    <link rel="stylesheet" href="user.css" type="text/css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+</head>
+
+<body>
+    <!-- 返回按钮 -->
+    <a href="javascript:void(0);" id="backButton" class="back-button">返回</a>
+    <div id="app">
+        <div class="div1">
+            <h1>用户管理</h1>
+            <p>
+                <label>用户名:<input type="text" v-model="name" placeholder="请输入用户名" required></label>
+                <label>密码:<input type="text" v-model="pass" placeholder="请输入密码" required></label>
+                <label>角色:
+                    <select v-model="author">
+                        <option value="超级管理员">超级管理员</option>
+                        <option value="管理员">管理员</option>
+                        <option value="普通用户">普通用户</option>
+                    </select>
+                </label>
+                <button type="button" @click="add">创建</button><br>
+            </p>
+            <p>
+                <label>请输入搜索关键字:<input type="text" v-model="keyword" placeholder="请输入搜索关键字"></label>
+                <button type="button" @click="searchUsers">搜索</button>
+            </p>
+            <table>
+                <thead>
+                    <tr :class="trClass">
+
+                        <th>ID</th>
+                        <th>用户名</th>
+                        <th>密码</th>
+                        <th>角色</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="(item, index) in usersFiltered" :key="item.id">
+                        <td>{{ item.id }}</td>
+                        <td>{{ item.name }}</td>
+                        <td>{{ item.pass }}</td>
+                        <td>{{ item.author }}</td>
+                        <td>
+                            <button @click.prevent="editUser(index)">编辑</button>
+                            <button @click.prevent="deleteUser(index)">删除</button>
+                            <button @click.prevent="showResetModal(index)">重置密码</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- 编辑用户模态框 -->
+            <div class="modal" v-if="showModal">
+                <div class="modal-content">
+                    <h2>编辑用户</h2>
+                    <label for="username">用户名:</label>
+                    <input type="text" id="username" v-model="modalData.name">
+
+                    <label for="password">密码:</label>
+                    <input type="text" id="password" v-model="modalData.pass">
+
+                    <label for="role">角色:</label>
+                    <select id="role" v-model="modalData.author">
+                        <option value="超级管理员">超级管理员</option>
+                        <option value="管理员">管理员</option>
+                        <option value="普通用户">普通用户</option>
+                    </select>
+
+                    <button @click="updateUser">确认</button>
+                    <button @click="cancelUpdate">取消</button>
+                </div>
+            </div>
+
+            <!-- 重置密码模态框 -->
+            <div class="modal" v-if="showModal1">
+                <div class="modal-content">
+                    <h2>重置密码</h2>
+                    <div class="form-group">
+                        <label for="resetUserId">用户ID:</label>
+                        <input type="text" id="resetUserId" v-model="resetPasswordData.id" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label for="resetUserName">名称:</label>
+                        <input type="text" id="resetUserName" v-model="resetPasswordData.name" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label for="resetCurrentPassword">原密码:</label>
+                        <input type="text" id="resetCurrentPassword" v-model="resetPasswordData.currentPassword"
+                            disabled>
+                    </div>
+                    <div class="form-group">
+                        <label for="resetNewPassword">新密码:</label>
+                        <input type="text" id="resetNewPassword" v-model="resetPasswordData.newPassword"
+                            placeholder="请输入新密码">
+                    </div>
+                    <div class="form-group">
+                        <label for="resetConfirmNewPassword">确认新密码:</label>
+                        <input type="text" id="resetConfirmNewPassword" v-model="resetPasswordData.confirmNewPassword"
+                            placeholder="请再次输入新密码">
+                    </div>
+                    <button @click="resetPassword">重置密码</button>
+                    <button @click="closeResetModal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="user.js"></script>
+</body>
+
+</html>

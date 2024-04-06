@@ -1,0 +1,157 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: url('argument.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #fff;
+    /* 白色字体 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.div1 {
+    width: 90%;
+    max-width: 800px;
+    margin: 20px auto;
+    border: 2px solid #fff;
+    /* 白色边框 */
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #333;
+    /* 深灰色背景 */
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 1rem;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+label {
+    display: block;
+    margin: 1rem 0;
+}
+
+input[type="text"],
+select {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #fff;
+    /* 白色边框 */
+    background-color: #222;
+    /* 更深的灰色背景 */
+    color: #fff;
+    /* 白色字体 */
+    border-radius: 5px;
+}
+
+button {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #555;
+    /* 灰色按钮 */
+    color: #fff;
+    border: 1px solid #fff;
+    /* 白色边框 */
+    border-radius: 5px;
+    margin-top: 10px;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s ease-in-out;
+}
+
+button:hover {
+    background-color: #777;
+    /* 按钮悬停颜色变亮 */
+    animation: pulsate 1s infinite;
+    /* 动画效果 */
+}
+
+@keyframes pulsate {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+table {
+    width: 100%;
+    margin-top: 1rem;
+    border-collapse: collapse;
+}
+
+table thead th {
+    padding: 10px;
+    border-bottom: 1px solid #fff;
+    /* 白色底部边框 */
+}
+
+table tbody td {
+    padding: 10px;
+    border-bottom: 1px solid #444;
+    /* 深灰色底部边框 */
+    text-align: center;
+}
+
+.back-button {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    transition: all 0.3s ease-in-out;
+}
+
+.back-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.6);
+}
+
+.modal {
+    display: none;
+    /* 默认不显示，由 Vue 控制显示 */
+    /* 其余样式根据需要添加 */
+}
+
+.back-button {
+    display: inline-block;
+    margin: 20px;
+    padding: 15px 30px;
+    background-color: #333333;
+    /* Dark gray as black alternative */
+    border: 2px solid #666666;
+    /* Lighter gray border */
+    color: #fff;
+    /* White text */
+    text-decoration: none;
+    border-radius: 25px;
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+    font-weight: bold;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+.back-button:hover {
+    background-color: #000000;
+    /* Black */
+    color: #fff;
+    /* White text */
+    /* Back to black text */
+    transform: scale(1.1);
+    /* Scaled up on hover */
+    cursor: pointer;
+    /* Hand cursor on hover */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    /* Shadow effect for depth */
+}

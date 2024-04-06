@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>公告管理</title>
+    <link rel="stylesheet" href="notice.css" type="text/css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+</head>
+
+<body>
+    <!-- 返回按钮 -->
+    <a href="javascript:void(0);" id="backButton" class="back-button">返回</a>
+    <div id="app">
+        <div>
+            <label for="title">公告标题:</label>
+            <input id="title" v-model="newNotice.title" placeholder="请输入公告标题" />
+        </div>
+        <div>
+            <label for="content">公告内容:</label>
+            <textarea id="content" v-model="newNotice.content" placeholder="请输入公告内容"></textarea>
+        </div>
+        <div>
+            <label for="author">发布者信息:</label>
+            <input id="author" v-model="newNotice.author" placeholder="请输入发布者名称或部门" />
+        </div>
+        <div>
+            <label for="expiry">有效期或更新日期:</label>
+            <input id="expiry" type="datetime-local" v-model="newNotice.expiry" :min="minDateTime"
+                placeholder="请选择有效期或更新日期" class="dateTime-input" />
+        </div>
+        <div>
+            <label for="contact">联系方式:</label>
+            <select id="contact-type" v-model="newNotice.contactType">
+                <option value="email">E-mail</option>
+                <option value="phone">电话</option>
+            </select>
+            <input id="contact" v-model="newNotice.contact" :placeholder="contactPlaceholder" />
+        </div>
+        <button @click="addNotice">创建公告</button>
+        <button @click="resetForm">清空表单</button>
+
+
+        <div class="div1">
+            <h1>最新公告</h1>
+            <h3>{{ latestNotice.title }}</h3>
+            <p>{{ latestNotice.content }}</p>
+            <!-- 显示额外的公告信息 -->
+            <p>发布者: {{ latestNotice.author }}</p>
+            <p>发布日期: {{ latestNotice.date }}</p>
+            <p>有效期/更新日期: {{ latestNotice.expiry }}</p>
+            <p>联系方式: {{ latestNotice.contact }}</p>
+        </div>
+
+        <h2>历史公告</h2>
+        <ul>
+            <li v-for="(notice, index) in notices" :key="notice.id">
+                <h3>{{ notice.title }}</h3>
+                <p>{{ notice.content }}</p>
+                <p>发布者: {{ notice.author }}</p>
+                <p>发布日期: {{ notice.date }}</p>
+                <p>有效期/更新日期: {{ notice.expiry }}</p>
+                <p>联系方式: {{ notice.contact }}</p>
+                <button @click="openEditModal(index)">编辑</button>
+                <button @click="deleteNotice(index)">删除</button>
+            </li>
+        </ul>
+        <!-- 编辑公告的弹窗 -->
+        <div v-if="isEditModalOpen" class="modal">
+            <div class="modal-content">
+                <h2>编辑公告</h2>
+                <form @submit.prevent="updateNotice">
+                    <label for="title">标题:</label>
+                    <input type="text" id="title" v-model="newNotice.title" required>
+                    <label for="content">内容:</label>
+                    <textarea id="content" v-model="newNotice.content" required></textarea>
+
+                    <label for="author">发布者:</label>
+                    <input type="text" id="author" v-model="newNotice.author">
+                    <label for="expiry">到期日期:</label>
+                    <input type="date" id="expiry" v-model="newNotice.expiry" :min="minDateTime">
+                    <label for="contact">联系方式:</label>
+                    <input type="text" id="contact" v-model="newNotice.contact" :placeholder="contactPlaceholder">
+                    <button @click="updateNotice">更新</button>
+                    <button @click="closeEditModal">关闭</button>
+                </form>
+            </div>
+        </div>
+
+
+    </div>
+
+    <script type="text/javascript" src="notice.js"></script>
+</body>
+
+</html>

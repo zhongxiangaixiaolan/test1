@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>系统码表管理</title>
+    <link rel="stylesheet" href="argument.css" type="text/css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+</head>
+
+<body>
+    <!-- 返回按钮 -->
+    <a href="javascript:void(0);" id="backButton" class="back-button">返回</a>
+    <div id="app">
+        <div class="div1">
+            <h1>系统码表管理</h1>
+            <p>
+                <label>码表名称:
+                    <input type="text" v-model="codeTableInput.name" placeholder="请输入码表名称" required>
+                </label>
+                <label>码表类型:
+                    <select v-model="codeTableInput.type">
+                        <option v-for="type1 in types" :value="type1">{{ type1 }}</option>
+                    </select>
+                </label>
+                <button type="button" @click="createCodeTable">创建码表</button>
+            </p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>序号</th>
+                        <th>码表名称</th>
+                        <th>码表类型</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="(codeTable, index) in codeTablesData" :key="codeTable.id">
+                        <td>{{ index + 1 }}</td>
+                        <td>{{ codeTable.name }}</td>
+                        <td>{{ codeTable.type }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="argument.js"></script>
+</body>
+
+</html>

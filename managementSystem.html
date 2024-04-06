@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>系统管理</title>
+    <link rel="stylesheet" href="managementSystem.css" type="text/css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+
+</head>
+
+<body>
+    <div id="app">
+        <div class="div1">
+            <h1>系统管理</h1>
+            <div class="block-container">
+                <!-- 使用 v-for 循环来渲染不同的色块，并通过 @click 指令绑定跳转函数 -->
+                <div v-for="item in managementItems" class="block" :class="item.cssClass" @click="navigateTo(item.link)"
+                    :key="item.text">
+                    <span class="block-text">{{ item.text }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="managementSystem.js"></script>
+</body>
+
+</html>
